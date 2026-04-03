@@ -89,15 +89,6 @@ int main()
 }
 
 
-void gotoxy(int column, int line)
-{
-    COORD coord;
-    coord.X = column;
-    coord.Y = line;
-    SetConsoleCursorPosition(
-        GetStdHandle(STD_OUTPUT_HANDLE), coord);
-}
-
 void VeKhung() {
     for (int i = MINX; i <= MAXX; i++) {
         gotoxy(i, MINY); printf("-");
@@ -108,29 +99,6 @@ void VeKhung() {
         gotoxy(MAXX, j); printf("|");
     }
 }
-int main()
-{
-    CONRAN r;
-    int Huong = 0;
-    char t;
-
-    while (1) {
-        if (kbhit()) {
-            t = getch();
-            if (t == 'a') Huong = 2;
-            if (t == 'w') Huong = 3;
-            if (t == 'd') Huong = 0;
-            if (t == 'x') Huong = 1;
-        }
-        system("cls");
-        r.Ve();
-        r.DiChuyen(Huong);
-        Sleep(300);
-    }
-
-    return 0;
-}
-
 
 void gotoxy(int column, int line)
 {
