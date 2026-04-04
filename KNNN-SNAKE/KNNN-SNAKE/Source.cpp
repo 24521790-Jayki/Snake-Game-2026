@@ -12,6 +12,10 @@ void gotoxy(int column, int line);
 struct Point {
     int x, y;
 };
+void SetColor(int color) {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, color);
+}
 class CONRAN {
 public:
     struct Point A[100];
@@ -79,7 +83,7 @@ int main()
         r.DiChuyen(Huong, Qua);
         if (r.IsChamKhung()) {
             gotoxy(MAXX / 2, MAXY / 2);
-            cout << "DUNG TUONG ROI! GAME OVER!";
+            cout << "GAME OVER! BAN DA THUA CUOC";
             break;
         }
         Sleep(100);
@@ -98,6 +102,7 @@ void VeKhung() {
         gotoxy(MINX, j); printf("|");
         gotoxy(MAXX, j); printf("|");
     }
+    SetColor(11);
 }
 
 void gotoxy(int column, int line)
