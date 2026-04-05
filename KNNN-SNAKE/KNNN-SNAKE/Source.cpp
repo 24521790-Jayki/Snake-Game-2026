@@ -22,9 +22,9 @@ public:
     int DoDai;
     CONRAN() {
         DoDai = 3;
-        A[0].x = 10; A[0].y = 10;
+        A[0].x = 12; A[0].y = 10;
         A[1].x = 11; A[1].y = 10;
-        A[2].x = 12; A[2].y = 10;
+        A[2].x = 10; A[2].y = 10;
     }
     void Ve(Point Qua) {
         for (int i = 0; i < DoDai; i++) {
@@ -54,6 +54,13 @@ public:
         if (A[0].x <= MINX || A[0].x >= MAXX || A[0].y <= MINY || A[0].y >= MAXY) {
             return true;
         }
+
+        for (int i = 1; i < DoDai; i++) {
+            if (A[0].x == A[i].x && A[0].y == A[i].y) {
+                return true;
+            }
+        }
+
         return false;
     }
 };
@@ -83,7 +90,7 @@ int main()
         r.DiChuyen(Huong, Qua);
         if (r.IsChamKhung()) {
             gotoxy(MAXX / 2, MAXY / 2);
-            cout << "GAME OVER! BAN DA THUA CUOC";
+            cout << "RAN DA CHET! GAME OVER!";
             break;
         }
         Sleep(100);
