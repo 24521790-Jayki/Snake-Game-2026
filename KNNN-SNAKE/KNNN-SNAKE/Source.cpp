@@ -12,6 +12,10 @@ void gotoxy(int column, int line);
 struct Point {
     int x, y;
 };
+void SetColor(int color) {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, color);
+}
 class CONRAN {
 public:
     struct Point A[100];
@@ -96,15 +100,6 @@ int main()
 }
 
 
-void gotoxy(int column, int line)
-{
-    COORD coord;
-    coord.X = column;
-    coord.Y = line;
-    SetConsoleCursorPosition(
-        GetStdHandle(STD_OUTPUT_HANDLE), coord);
-}
-
 void VeKhung() {
     for (int i = MINX; i <= MAXX; i++) {
         gotoxy(i, MINY); printf("-");
@@ -114,4 +109,16 @@ void VeKhung() {
         gotoxy(MINX, j); printf("|");
         gotoxy(MAXX, j); printf("|");
     }
+    SetColor(11);
+}
+
+void gotoxy(int column, int line)
+{
+    COORD coord;
+    coord.X = column;
+    coord.Y = line;
+    SetConsoleCursorPosition(
+        GetStdHandle(STD_OUTPUT_HANDLE),
+        coord
+    );
 }
