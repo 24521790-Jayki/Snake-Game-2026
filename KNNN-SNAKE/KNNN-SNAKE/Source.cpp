@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <cstdlib>
 #include <conio.h>
+#include <ctime>
 using namespace std;
 #define MINX 2
 #define MINY 2
